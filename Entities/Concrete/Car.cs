@@ -8,11 +8,11 @@ namespace Entities.Concrete
     public class Car : IEntity
     {
         public int CarId { get; set; }
-        public int BrandId { get; set; }
         public int ColorId { get; set; }
-        public decimal ModelYear { get; set; }
+        public int BrandId { get; set; }
+        public int ModelYear { get; set; }
         public int DailyPrice { get; set; }
-        public string Desctiption { get; set; }
+        public string Description { get; set; }
 
 
     }

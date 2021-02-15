@@ -21,17 +21,16 @@ namespace Business.Concrete
 
         public IResult Add(Car car)
         {
-            if (car.DailyPrice > 0)
-            {
-                _carDal.Add(car);
-                Console.WriteLine("Araba eklendi");
-            }
-            else
-            {
-                Console.WriteLine("Arabanın günlük fiyati 0 dan büyük olmalıdır. Girdiğiniz değer" + (car.DailyPrice));
-            }
+            //business codes
 
-            return new SuccessResult();
+            if (car.Description.Length < 2)
+            {
+                //magic strings
+                return new ErrorResult(Messages.CarNameInvalid);
+            }
+            _carDal.Add(car);
+
+            return new SuccessResult(Messages.CarAdded);
         }
 
         public IResult Delete(Car car)
@@ -41,7 +40,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetAll()
         {
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 1)
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintenanceTime);
             }
